@@ -1,10 +1,10 @@
 package src;
 public class Account {
     private String name;
-    private int id;
+    private String password;
 
-    public Account(String name, int id){
+    public Account(String name, String password){
         this.name = name;
-        this.id = id;
+        this.password = password;
     }
 }

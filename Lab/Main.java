@@ -8,6 +8,8 @@ public class Main {
         pencatat.mencatat(2, 3000, "Catatan ID ke 2");
         pencatat.mencatat(4, 2000, "BAYAAAA");
         pencatat.mencatat(3, 2000, "BAYAAAA");
+        pencatat.mencatat(3, 2000, "BAYAAAA");
+
 
         seeksss.seek(pencatat);
      }
