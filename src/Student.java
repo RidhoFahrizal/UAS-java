@@ -7,7 +7,7 @@ public class Student extends User{
         
     }
 
-    public void viewHistoryTransaction(HistoryTransaction historyTransaction){
-        historyTransaction.displayTransactionByObject();
+    public void viewHistoryTransaction(HistoryTransaction historyTransaction, int id){
+        historyTransaction.displayTransactionById(id);
    }
 }

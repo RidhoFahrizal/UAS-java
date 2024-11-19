@@ -6,11 +6,6 @@ public class HistoryTransaction {
     
     LinkedList <Transaction> transactions = new LinkedList<Transaction>();
 
-
-    public void addTransaction(){
-
-    }
-
     public void displayAllTransaction(){
 
     }
