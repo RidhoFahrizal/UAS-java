@@ -4,6 +4,8 @@ import java.util.LinkedList;
 
 public class CashBook {
     // Deklarasikan atribut list pada tingkat kelas
+    int totalCash;
+    int totalUserCash;
     LinkedList<String> list;
 
     // Constructor untuk inisialisasi

@@ -1,9 +1,9 @@
 package src;
 public class Account {
     private String name;
-    private String id;
+    private int id;
 
-    public Account(String name, String id){
+    public Account(String name, int id){
         this.name = name;
         this.id = id;
     }

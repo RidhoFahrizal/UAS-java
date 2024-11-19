@@ -2,20 +2,18 @@ package src;
 
 public class User {
     private String name;
-    private String studentID;
+    private int id;
     private Account account;
-
-    public User(String name, String studentID) {
+    public User(String name, int id) {
         this.name = name;
-        this.studentID = studentID;
-        account = new Account(name, studentID);
+        this.id = id;
+        account = new Account(name, id);
     }
 
-    public void CheckClassCash(){
-        
+    public int CheckTotalCash(CashBook cashBook){ 
+        return cashBook.totalCash;
     }
-
-    public void CheckIndividualCash(){
-
+    public int payFund(int nominal){
+        return nominal;
     }
 }
