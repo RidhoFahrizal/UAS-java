@@ -13,7 +13,7 @@ public class Treasurer extends User{
       
       
    }
-
+/* 
    public void viewAllTransaction(){
 
    }
@@ -21,4 +21,6 @@ public class Treasurer extends User{
    public void viewTransactionById(){
 
    }
+
+*/
 }
