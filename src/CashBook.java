@@ -12,5 +12,7 @@ public class CashBook {
     public void addCash(int nominal){
         totalCash += nominal;
     }
-
+    public String toString() {
+        return "Total Cash: " + totalCash;
+    }
 }
