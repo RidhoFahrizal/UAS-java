@@ -7,7 +7,14 @@ public class Student extends User{
         
     }
 
-    public void viewHistoryTransaction(HistoryTransaction historyTransaction, int id){
+    public void viewHistoryTransaction(HistoryTransaction historyTransaction, int id) {
         historyTransaction.displayTransactionById(id);
+    }
+    
+   public String viewTotalCash(Treasurer treasurer){
+        return "total cash"  + treasurer.checkTotalCash();
    }
+  
+
+   
 }

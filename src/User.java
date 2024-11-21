@@ -10,10 +10,20 @@ public class User {
         account = new Account(username, password);
     }
 
-    public int CheckTotalCash(CashBook cashBook){ 
-        return cashBook.CheckTotalCash();
-    }
+  
     public int payFund(int nominal){
         return nominal;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getid() {
+        return id;
+    }
+
+    public Account getAccount(){
+        return this.account;
     }
 }

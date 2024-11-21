@@ -8,75 +8,69 @@ import java.awt.event.ActionListener;
 public class LoginGUI extends JFrame {
     private JTextField usernameField;
     private JPasswordField passwordField;
-    private JButton loginButton;
-    private JLabel statusLabel;
 
-    // Daftar akun
-private static final Account[] accounts = {
-    new Account("treasurer", "1234"),
-    new Account("student", "1234")
-};
+    private Treasurer treasurer;
+    private Student student;
 
+    public LoginGUI(Treasurer treasurer, Student student) {
+        this.treasurer = treasurer;
+        this.student = student;
 
-    public LoginGUI() {
-        setTitle("Login - CashBook App");
-        setSize(400, 200);
+        setTitle("Login");
+        setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // Panel utama
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(4, 2, 10, 10));
+        JPanel panel = new JPanel(new GridLayout(3, 2, 10, 10));
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        // Komponen login
         JLabel usernameLabel = new JLabel("Username:");
         usernameField = new JTextField();
         JLabel passwordLabel = new JLabel("Password:");
         passwordField = new JPasswordField();
-        loginButton = new JButton("Login");
-        statusLabel = new JLabel("", SwingConstants.CENTER);
 
-        // Tambahkan komponen ke panel
+        JButton loginButton = new JButton("Login");
+
         panel.add(usernameLabel);
         panel.add(usernameField);
         panel.add(passwordLabel);
         panel.add(passwordField);
-        panel.add(new JLabel()); // Spacer
+        panel.add(new JLabel());
         panel.add(loginButton);
-        panel.add(statusLabel);
 
         add(panel);
 
-        // Action listener untuk tombol login
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String username = usernameField.getText();
-                String password = new String(passwordField.getPassword());
-                handleLogin(username, password);
+                login();
             }
         });
     }
 
-    // Metode untuk menangani login
-    private void handleLogin(String username, String password) {
-        for (Account account : accounts) {
-            if (account.getName().equals(username) && account.getPassword().equals(password)) {
-                if (username.equals("treasurer")) {
-                    new DashboardGUI(true).setVisible(true);
-                } else {
-                    new DashboardGUI(false).setVisible(true);
-                }
-                this.dispose();
-                return;
-            }
+    private void login() {
+        String username = usernameField.getText();
+        String password = new String(passwordField.getPassword());
+
+        if (username.equals(treasurer.getAccount().getName()) &&
+            password.equals(treasurer.getAccount().getPassword())) {
+            JOptionPane.showMessageDialog(this, "Welcome Treasurer!");
+            new TreasurerDashboard(treasurer).setVisible(true);
+            dispose();
+        } else if (username.equals(student.getAccount().getName()) &&
+                   password.equals(student.getAccount().getPassword())) {
+            JOptionPane.showMessageDialog(this, "Welcome Student!");
+            new StudentDashboard(student, treasurer).setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid credentials. Please try again.");
         }
-        statusLabel.setText("Invalid credentials. Try again.");
-        statusLabel.setForeground(Color.RED);
     }
-    
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new LoginGUI().setVisible(true));
+        Treasurer treasurer = new Treasurer("John Treasurer", 1, "treasurer123", "password123");
+        Student student = new Student("Jane Student", 2, "student123", "password123");
+
+        new LoginGUI(treasurer, student).setVisible(true);
     }
 }
